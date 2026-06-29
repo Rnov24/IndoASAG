@@ -1,0 +1,28 @@
+# Python compiler output
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Virtual environment folders
+.venv/
+venv/
+env/
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Large checkpoints / model weights (Hugging Face is used instead)
+checkpoints/
+*.pt
+*.bin
+*.h5
+
+# Local config or temporary files
+.env
+
+# Ignore Jupytext paired python scripts in notebooks directory (only push .ipynb to GitHub)
+notebooks/*.py
+

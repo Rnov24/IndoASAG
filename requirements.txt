@@ -1,0 +1,28 @@
+# Core dependencies
+pandas>=1.5.0
+numpy>=1.23.0
+scikit-learn>=1.2.0
+scipy>=1.10.0
+pyarrow>=10.0.0
+pyyaml>=6.0.0
+openpyxl>=3.1.0
+
+# Deep learning
+torch>=2.0.0
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+
+# Preprocessing & Indonesian NLP
+Sastrawi>=1.0.1
+
+# Visualization & Notebooks
+matplotlib>=3.7.0
+seaborn>=0.12.0
+ipykernel
+
+# Statistical Analysis
+krippendorff
+
+# Model Utilities & Demos
+huggingface_hub
+joblib
