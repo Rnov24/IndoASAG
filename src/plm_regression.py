@@ -178,6 +178,40 @@ def train_one_fold(
     seed_everything(seed)
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
+    # Check if pre-trained checkpoint already exists to skip training
+    if save_path is not None and os.path.exists(save_path):
+        print(f"  [Info] Checkpoint found at {save_path}. Skipping training and running inference...")
+        model = BertRegressorModule(model_name, dropout_rate=0.1, num_dropouts=5)
+        checkpoint = torch.load(save_path, map_location=device)
+        if "model_state_dict" in checkpoint:
+            model.load_state_dict(checkpoint["model_state_dict"])
+        else:
+            model.load_state_dict(checkpoint)
+        model = model.to(device)
+        
+        # Run validation inference
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        val_dataset = PairDataset(
+            val_df["reference_answer"].tolist(),
+            val_df["student_answer"].tolist(),
+            val_df["score_norm"].tolist(),
+            tokenizer
+        )
+        val_loader = DataLoader(val_dataset, batch_size=batch_size * 2, shuffle=False)
+        
+        model.eval()
+        val_preds = []
+        val_embs = []
+        with torch.no_grad():
+            for batch in val_loader:
+                ids = batch["input_ids"].to(device)
+                mask = batch["attention_mask"].to(device)
+                with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda")):
+                    preds, cls_output = model(ids, mask)
+                val_preds.extend(preds.cpu().numpy())
+                val_embs.extend(cls_output.cpu().numpy())
+        return np.array(val_preds), np.array(val_embs)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     
     # Create datasets & loaders
@@ -217,7 +251,7 @@ def train_one_fold(
     scheduler = get_linear_schedule_with_warmup(optimizer, warmup_steps, total_steps)
     
     loss_fn = nn.MSELoss()
-    scaler = torch.cuda.amp.GradScaler(enabled=(device.type == "cuda")) # For FP16 Mixed Precision
+    scaler = torch.amp.GradScaler("cuda", enabled=(device.type == "cuda")) # For FP16 Mixed Precision
     
     best_loss = float("inf")
     best_preds = None
@@ -247,7 +281,7 @@ def train_one_fold(
             scores = batch["score"].to(device)
             
             # Autocast FP16 forward pass
-            with torch.cuda.amp.autocast():
+            with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda")):
                 if rdrop_alpha is not None and rdrop_alpha > 0:
                     # Run two passes with different dropout masks
                     p1, _ = model(ids, mask)
@@ -265,9 +299,15 @@ def train_one_fold(
             scaler.unscale_(optimizer)
             nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             
+            # Step optimizer and update scaler
+            scale_before = scaler.get_scale()
             scaler.step(optimizer)
             scaler.update()
-            scheduler.step()
+            
+            # Step scheduler only if optimizer step was not skipped
+            scale_after = scaler.get_scale()
+            if scale_after >= scale_before:
+                scheduler.step()
             
             train_loss += loss.item()
             
@@ -283,7 +323,7 @@ def train_one_fold(
                 mask = batch["attention_mask"].to(device)
                 scores = batch["score"].to(device)
                 
-                with torch.cuda.amp.autocast():
+                with torch.amp.autocast(device_type=device.type, enabled=(device.type == "cuda")):
                     preds, cls_output = model(ids, mask)
                     loss = loss_fn(preds, scores)
                     
