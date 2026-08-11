@@ -1,0 +1,6 @@
+model,QWK,MAE,Pearson,RMSE
+IndoBERT (Frozen) + Ridge [NEW],0.8226587145777766,0.10074888629900483,0.8594113167961338,0.13960934597774188
+SBERT (Frozen) + Ridge [paper],0.801,0.078,0.907,0.101
+HC Morph + SVR [paper],0.838,0.057,0.92,0.082
+IndoBERT (Fine-tuned) [paper],0.878,0.052,0.944,0.071
+Late Fusion Ridge [paper],0.89,0.05,0.947,0.069
