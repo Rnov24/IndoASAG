@@ -1,0 +1,4 @@
+partition,n_samples,raw_mean,raw_std,raw_min,raw_max,norm_mean,norm_std,norm_min,norm_max,rater_std_mean,n_raters_mode
+Master,2162,41.723,26.878,0.667,100.0,0.417,0.269,0.007,1.0,5.807,3
+Train,1729,41.822,26.899,1.0,100.0,0.418,0.269,0.01,1.0,5.863,3
+Test,433,41.33,26.824,0.667,100.0,0.413,0.268,0.007,1.0,5.581,3

@@ -1,0 +1,17 @@
+scheme,n_bins,model,QWK,MAE,Pearson
+"Standard 5-Bin [0.2, 0.4, 0.6, 0.8]",5,Late Fusion Ridge,0.896,0.0726,0.932
+"Standard 5-Bin [0.2, 0.4, 0.6, 0.8]",5,Late Fusion CARG,0.882,0.0769,0.9316
+"Standard 5-Bin [0.2, 0.4, 0.6, 0.8]",5,IndoBERT Fine-tuned,0.8817,0.0773,0.9338
+"Standard 5-Bin [0.2, 0.4, 0.6, 0.8]",5,IndoBERT (Frozen),0.8227,0.1007,0.8594
+"Quartile 4-Bin [0.25, 0.50, 0.75]",4,Late Fusion Ridge,0.8591,0.0726,0.932
+"Quartile 4-Bin [0.25, 0.50, 0.75]",4,Late Fusion CARG,0.8478,0.0769,0.9316
+"Quartile 4-Bin [0.25, 0.50, 0.75]",4,IndoBERT Fine-tuned,0.8474,0.0773,0.9338
+"Quartile 4-Bin [0.25, 0.50, 0.75]",4,IndoBERT (Frozen),0.8086,0.1007,0.8594
+"Asymmetric 5-Bin [0.15, 0.35, 0.65, 0.85]",5,Late Fusion Ridge,0.8546,0.0726,0.932
+"Asymmetric 5-Bin [0.15, 0.35, 0.65, 0.85]",5,Late Fusion CARG,0.8384,0.0769,0.9316
+"Asymmetric 5-Bin [0.15, 0.35, 0.65, 0.85]",5,IndoBERT Fine-tuned,0.8562,0.0773,0.9338
+"Asymmetric 5-Bin [0.15, 0.35, 0.65, 0.85]",5,IndoBERT (Frozen),0.8063,0.1007,0.8594
+"Tertiaries 3-Bin [0.333, 0.667]",3,Late Fusion Ridge,0.8339,0.0726,0.932
+"Tertiaries 3-Bin [0.333, 0.667]",3,Late Fusion CARG,0.8231,0.0769,0.9316
+"Tertiaries 3-Bin [0.333, 0.667]",3,IndoBERT Fine-tuned,0.8476,0.0773,0.9338
+"Tertiaries 3-Bin [0.333, 0.667]",3,IndoBERT (Frozen),0.7718,0.1007,0.8594

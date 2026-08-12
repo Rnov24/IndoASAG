@@ -1,0 +1,5 @@
+topic,n_questions,n_total,n_train,n_test,pct_test
+Lifestyle,10,568,454,114,20.1%
+Olahraga,10,544,435,109,20.0%
+Politik,10,535,428,107,20.0%
+Teknologi,10,515,412,103,20.0%
