@@ -1,0 +1,4 @@
+matrix,condition_number,n_dims
+embedding_768,928663.8963932137,768
+hc_morph_11,38.72155111702628,11
+joint_early_fusion_779,933947.5283839948,779
