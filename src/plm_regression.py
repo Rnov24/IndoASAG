@@ -169,7 +169,8 @@ def train_one_fold(
     rdrop_alpha: float = 1.0,
     seed: int = 42,
     fold: int = 0,
-    save_path: str = None
+    save_path: str = None,
+    retrain: bool = False
 ) -> tuple:
     """Train the model on a single cross-validation fold.
 
@@ -180,8 +181,8 @@ def train_one_fold(
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Check if pre-trained checkpoint already exists to skip training
-    if save_path is not None and os.path.exists(save_path):
-        print(f"  [Info] Checkpoint found at {save_path}. Skipping training and running inference...")
+    if not retrain and save_path is not None and os.path.exists(save_path):
+        print(f"  [Info] Checkpoint found at {save_path} (retrain=False). Skipping training and running inference...")
         model = BertRegressorModule(model_name, dropout_rate=0.1, num_dropouts=5)
         checkpoint = torch.load(save_path, map_location=device)
         if "model_state_dict" in checkpoint:
