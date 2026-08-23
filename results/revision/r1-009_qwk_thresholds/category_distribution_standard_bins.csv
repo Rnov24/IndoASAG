@@ -1,16 +1,16 @@
 partition,category_index,category_range,count,percentage
-Master,0,0.0 - 0.2 (Sangat Buruk),413,19.1
-Master,1,0.2 - 0.4 (Buruk),667,30.85
-Master,2,0.4 - 0.6 (Cukup),594,27.47
-Master,3,0.6 - 0.8 (Baik),203,9.39
-Master,4,0.8 - 1.0 (Sangat Baik),285,13.18
-Train,0,0.0 - 0.2 (Sangat Buruk),328,18.97
-Train,1,0.2 - 0.4 (Buruk),534,30.88
-Train,2,0.4 - 0.6 (Cukup),476,27.53
-Train,3,0.6 - 0.8 (Baik),161,9.31
-Train,4,0.8 - 1.0 (Sangat Baik),230,13.3
-Test,0,0.0 - 0.2 (Sangat Buruk),85,19.63
-Test,1,0.2 - 0.4 (Buruk),133,30.72
-Test,2,0.4 - 0.6 (Cukup),118,27.25
-Test,3,0.6 - 0.8 (Baik),42,9.7
-Test,4,0.8 - 1.0 (Sangat Baik),55,12.7
+Master,0,0.0 - 0.2 (Very Poor),413,19.1
+Master,1,0.2 - 0.4 (Poor),667,30.85
+Master,2,0.4 - 0.6 (Fair),594,27.47
+Master,3,0.6 - 0.8 (Good),203,9.39
+Master,4,0.8 - 1.0 (Excellent),285,13.18
+Train,0,0.0 - 0.2 (Very Poor),328,18.97
+Train,1,0.2 - 0.4 (Poor),534,30.88
+Train,2,0.4 - 0.6 (Fair),476,27.53
+Train,3,0.6 - 0.8 (Good),161,9.31
+Train,4,0.8 - 1.0 (Excellent),230,13.3
+Test,0,0.0 - 0.2 (Very Poor),85,19.63
+Test,1,0.2 - 0.4 (Poor),133,30.72
+Test,2,0.4 - 0.6 (Fair),118,27.25
+Test,3,0.6 - 0.8 (Good),42,9.7
+Test,4,0.8 - 1.0 (Excellent),55,12.7
