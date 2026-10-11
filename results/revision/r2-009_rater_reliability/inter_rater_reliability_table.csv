@@ -1,0 +1,9 @@
+Metric,Value,Interpretation
+Mean Inter-Rater Std,5.8066,Score dispersion per answer (0-100)
+Pairwise Pearson r,0.9373,Mean pairwise linear correlation
+Pairwise QWK,0.9053,Mean pairwise quadratic weighted kappa
+Krippendorff Alpha,0.9292,Interval reliability coefficient (>0.80 highly reliable)
+"ICC(2,1)",0.9294,Two-way random single rater absolute agreement (95% CI: 0.9292-0.9384)
+"ICC(2,k)",0.9753,Two-way random k=3 raters absolute agreement (95% CI: 0.9752-0.9786)
+"ICC(3,1)",0.934,Two-way mixed single rater consistency
+"ICC(3,k)",0.977,Two-way mixed k=3 raters consistency

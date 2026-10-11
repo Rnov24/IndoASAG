@@ -1,0 +1,2 @@
+Comparison,Delta_QWK_Mean,Delta_QWK_95CI_Low,Delta_QWK_95CI_High,p_value_QWK,Delta_MAE_Mean,Delta_MAE_95CI_Low,Delta_MAE_95CI_High,p_value_MAE
+Late Fusion (IB+LightGBM) vs Late Fusion (IB+SVR),0.006,-0.006,0.0182,0.181,-0.0055,-0.0078,-0.0034,0.0
